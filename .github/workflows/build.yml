@@ -2,31 +2,29 @@
 name: Build C++ EXE
 
 on:
-  push:
-    branches: [ "main" ]
   workflow_dispatch:
+  push:
+    branches: [main]
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Download Repository
         uses: actions/checkout@v4
 
-      - name: Setup MinGW
-        uses: msys2/setup-msys2@v2
-        with:
-          msystem: MINGW64
-          install: mingw-w64-x86_64-gcc
+      - name: Install Compiler
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++-mingw-w64-x86-64
 
       - name: Compile C++ to EXE
-        shell: msys2 {0}
         run: |
-          g++ -std=c++17 -O2 -static main.cpp -o main.exe
+          x86_64-w64-mingw32-g++ main.cpp -o Menu-Makanan.exe -static
 
       - name: Upload EXE
         uses: actions/upload-artifact@v4
         with:
-          name: aplikasi-exe
-          path: main.exe
+          name: Menu-Makanan-EXE
+          path: Menu-Makanan.exe
