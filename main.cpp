@@ -1,14 +1,15 @@
 
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 
 int main() {
     int pilihan, jumlah;
     int harga, total;
 
-    cout << "      MENU MAKANAN        " << endl;
-    cout << "1. Soto  : Rp15.000" << endl;
-    cout << "2. Rawon : Rp20.000" << endl;
+    cout << "====== MENU MAKANAN ======" << endl;
+    cout << "1. Soto  : Rp15000" << endl;
+    cout << "2. Rawon : Rp20000" << endl;
 
     cout << "Pilih menu (1/2): ";
     cin >> pilihan;
@@ -23,6 +24,7 @@ int main() {
     }
     else {
         cout << "Pilihan tidak tersedia!" << endl;
+        system("pause");
         return 0;
     }
 
@@ -34,5 +36,6 @@ int main() {
     cout << "Total pembayaran: Rp" << total << endl;
     cout << "Terima kasih sudah memesan!" << endl;
 
+    system("pause");
     return 0;
 }
